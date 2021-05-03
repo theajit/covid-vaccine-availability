@@ -10,12 +10,14 @@ import "./styles.css";
 function App() {
   const [vaccineCenters, setVaccineCenters] = useState(null);
   const [vaccineDates, setVaccineDates] = useState();
+  const [pinCode, setPinCode] = useState("");
 
   const fetchData = async () => {
-    var formattedDate = format(vaccineDates, "dd-MM-yyyy");
+    const formattedDate = format(vaccineDates, "dd-MM-yyyy");
     const formattedURL =
-      "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=294&date=" +
+    "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=" + pinCode + "&date=" +
       formattedDate;
+      
     const response = await axios.get(formattedURL);
 
     setVaccineCenters(response.data.centers);
@@ -25,6 +27,12 @@ function App() {
     <div className="App">
       <h1>BBMP Vaccine Slot Available Dates</h1>
 
+      <input
+           type="text"
+           name="pincode"
+           value={pinCode}
+           onChange={e => setPinCode(e.target.value)}
+         />
       <DatePicker
         date={vaccineDates}
         onDateChange={setVaccineDates}
