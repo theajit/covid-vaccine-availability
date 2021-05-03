@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>BBMP Vaccine Slot Available Dates</h1>
+      <h1>Cowin Vaccine Slot Availablilty across India</h1>
       <div className="form-inline">
       <input
           className="effect-8"
