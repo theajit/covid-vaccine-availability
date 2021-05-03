@@ -60,16 +60,17 @@ function App() {
       </div>
 
       {/* Display data from API */}
-      <div className="vaccines">
+      <div className="vaccines-detail">
         {vaccineCenters &&
           vaccineCenters.map((vaccineCenter, index) => {
             const cleanedDate = vaccineCenter.sessions[0].date;
             const mapLink = "https://www.google.com/maps/search/" + vaccineCenter.name + " " + vaccineCenter.pincode;
 
             return (
-              <div className="vaccine" key={index}>
-                <h3>Vaccine Center {index + 1}</h3>
+              <div className="vaccine-detail" key={index}>
                 <h2>{vaccineCenter.name}</h2>
+                <h3>{vaccineCenter.district_name}</h3>
+                <h3>{vaccineCenter.block_name}</h3>
 
                 <div className="details">
                   <p>
@@ -78,6 +79,14 @@ function App() {
                   <p>Minimum Age: {vaccineCenter.sessions[0].min_age_limit}</p>
                   <p>Pincode: {vaccineCenter.pincode}</p>
                   <p>Date: {cleanedDate}</p>
+                  <p>Price: {vaccineCenter.fee_type}</p>
+                  {vaccineCenter.fee_type === "Paid" &&
+                    <div>
+                    <p>Vaccine Name: {vaccineCenter.vaccine_fees[0].vaccine}</p>
+                    <p>Vaccine Price: <span>&#8377; </span>
+                      {vaccineCenter.vaccine_fees[0].fee}</p>
+                    </div>
+                  }
                   <p>Location: <a href={mapLink} target="blank">Look in Map</a></p>
                   <p>Registration Link: <a href="https://selfregistration.cowin.gov.in/" target="blank">Register Here</a></p>
                 </div>
