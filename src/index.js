@@ -54,7 +54,7 @@ function App() {
       {/* Fetch data from API */}
       <div>
         <button className="fetch-button" onClick={fetchData}>
-          Fetch Available Dates
+          Fetch Vaccine Centers
         </button>
         <br />
       </div>
@@ -78,7 +78,8 @@ function App() {
                   <p>Minimum Age: {vaccineCenter.sessions[0].min_age_limit}</p>
                   <p>Pincode: {vaccineCenter.pincode}</p>
                   <p>Date: {cleanedDate}</p>
-                  <p>Location: <a href={mapLink} target="_blank">Look in Map</a></p>
+                  <p>Location: <a href={mapLink} target="blank">Look in Map</a></p>
+                  <p>Registration Link: <a href="https://selfregistration.cowin.gov.in/" target="blank">Register Here</a></p>
                 </div>
               </div>
             );
