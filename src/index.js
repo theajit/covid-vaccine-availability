@@ -30,6 +30,7 @@ function App() {
       <input
            type="text"
            name="pincode"
+           placegolder="Enter Pincode"
            value={pinCode}
            onChange={e => setPinCode(e.target.value)}
          />
