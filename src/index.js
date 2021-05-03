@@ -24,7 +24,6 @@ function App() {
   return (
     <div className="App">
       <h1>BBMP Vaccine Slot Available Dates</h1>
-      <h2></h2>
 
       <DatePicker
         date={vaccineDates}
