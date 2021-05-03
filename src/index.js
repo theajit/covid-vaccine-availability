@@ -52,6 +52,7 @@ function App() {
         {vaccineCenters &&
           vaccineCenters.map((vaccineCenter, index) => {
             const cleanedDate = vaccineCenter.sessions[0].date;
+            const mapLink = "https://www.google.com/maps/search/" + vaccineCenter.name + " " + vaccineCenter.pincode;
 
             return (
               <div className="vaccine" key={index}>
@@ -65,6 +66,7 @@ function App() {
                   <p>Minimum Age: {vaccineCenter.sessions[0].min_age_limit}</p>
                   <p>Pincode: {vaccineCenter.pincode}</p>
                   <p>Date: {cleanedDate}</p>
+                  <p>Location: <a href={mapLink} target="_blank">Look in Map</a></p>
                 </div>
               </div>
             );
