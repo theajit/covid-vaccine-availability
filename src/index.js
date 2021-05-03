@@ -26,11 +26,12 @@ function App() {
   return (
     <div className="App">
       <h1>BBMP Vaccine Slot Available Dates</h1>
-
+      <div className="form-inline">
       <input
+          className="effect-8"
            type="text"
            name="pincode"
-           placegolder="Enter Pincode"
+           placeholder="Enter Pincode"
            value={pinCode}
            onChange={e => setPinCode(e.target.value)}
          />
@@ -42,12 +43,14 @@ function App() {
       >
         {({ inputProps, focused }) => (
           <input
-            className={"input" + (focused ? " -focused" : "")}
+            className={"effect-8 input" + (focused ? " -focused" : "")}
             {...inputProps}
           />
         )}
       </DatePicker>
       <p></p>
+      </div>
+      
       {/* Fetch data from API */}
       <div>
         <button className="fetch-button" onClick={fetchData}>
