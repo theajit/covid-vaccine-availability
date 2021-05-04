@@ -73,17 +73,6 @@
   border: 1px solid #ccc; padding: 7px 14px 9px; transition: 0.4s;
 }
 
-.effect-8 ~ .focus-border:before,
-.effect-8 ~ .focus-border:after{content: ""; position: absolute; top: 0; left: 0; width: 0; height: 2px; background-color: #3399FF !important; transition: 0.3s;}
-.effect-8 ~ .focus-border:after{top: auto; bottom: 0; left: auto; right: 0;}
-.effect-8 ~ .focus-border i:before,
-.effect-8 ~ .focus-border i:after{content: ""; position: absolute; top: 0; left: 0; width: 2px; height: 0; background-color: #3399FF !important; transition: 0.4s;}
-.effect-8 ~ .focus-border i:after{left: auto; right: 0; top: auto; bottom: 0;}
-.effect-8:focus ~ .focus-border:before,
-.effect-8:focus ~ .focus-border:after{width: 100%; transition: 0.3s;}
-.effect-8:focus ~ .focus-border i:before,
-.effect-8:focus ~ .focus-border i:after{height: 100%; transition: 0.4s;}
-
 .form-inline {
   display: flex;
   flex-flow: row wrap;
@@ -95,4 +84,27 @@
   vertical-align: middle;
   margin: 5px 10px 5px 0;
   padding: 10px;
+}
+
+.MuiInputLabel-filled {
+  transform: translate(12px, 5px) scale(1)!important;
+}
+
+.input{
+  -webkit-appearance: none;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid #d3dde6;
+    color: #0e3254;
+    display: block;
+    font-family: inherit;
+    font-size: inherit;
+    height: 42px;
+    outline: none;
+    padding: 0 12px;
+    transition: border-color .2s;
+}
+
+.input.-focused, .input:focus {
+  border-color: #438cd2;
 }
