@@ -1,11 +1,13 @@
 {
-  "name": "bbmp-vaccine-slot-available",
+  "name": "india-vaccine-slot-getjab-online",
   "version": "1.0.0",
-  "description": "BBMP COVID Vaccine Slot Availability",
+  "description": "Getajab.Online COVID Vaccine Slot Availability",
   "keywords": [
     "covid-19",
     "vaccine",
-    "available slots"
+    "available slots",
+    "getjab.online",
+    "India vaccine Slots"
   ],
   "main": "src/index.js",
   "dependencies": {
