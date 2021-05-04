@@ -5,15 +5,19 @@
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
   <a href="https://twitter.com/cocktails_guy" target="_blank">
-    <img alt="Twitter: cocktails\_guy" src="https://img.shields.io/twitter/follow/cocktails_guy.svg?style=social" />
+    <img alt="Twitter: cocktails_guy" src="https://img.shields.io/twitter/follow/cocktails_guy.svg?style=social" />
   </a>
 </p>
 
 > Getajab.Online COVID Vaccine Slot Availability
 
-### 🏠 [Homepage](getjab.online)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fdbeb4d8-3fd1-494a-a618-7191d7e7acd3/deploy-status)](https://app.netlify.com/sites/getjab/deploys)
 
-### ✨ [Demo](getjab.online)
+
+
+### 🏠 [Homepage](https://getjab.online)
+
+### ✨ [Demo](https://getjab.online)
 
 ## Install
 
@@ -40,9 +44,3 @@ npm run test
 * Website: https://theajit.in
 * Twitter: [@cocktails_guy](https://twitter.com/cocktails_guy)
 * Github: [@theajit](https://github.com/theajit)
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
-
-***
