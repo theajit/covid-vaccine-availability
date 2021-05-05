@@ -15,11 +15,12 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import { makeStyles } from '@material-ui/core/styles';
 import FilledInput from '@material-ui/core/FilledInput';
+import Alert from '@material-ui/lab/Alert';
 
 
 
 function App() {
-  const [vaccineCenters, setVaccineCenters] = useState(null);
+  const [vaccineCenters, setVaccineCenters] = useState([]);
   const [vaccineDates, setVaccineDates] = useState();
   const [pinCode, setPinCode] = useState("");
   const [selectSearch, setSelectSearch] = useState("isSearchByPincode")
@@ -42,7 +43,7 @@ function App() {
   const changeStateSelectHandler = (event) => {
     event.preventDefault();
     setStateValue(event.currentTarget.value);
-    getDistricts(stateValue);
+    //getDistricts(stateValue);
   };
 
   const fetchData = async () => {
@@ -52,19 +53,25 @@ function App() {
       formattedDate;
 
     const response = await axios.get(formattedURL);
-
+    if (response.data.centers.lenghth === 0 ){
+      setVaccineCenters(0)
+    }
     setVaccineCenters(response.data.centers);
   };
 
   React.useEffect(() => {
-    async function getStates() {
-      const response = await axios.get("https://cdn-api.co-vin.in/api/v2/admin/location/states");
-      setStates(response.data.states.map(({ state_name, state_id }) => ({ label: state_name, value: state_id })));
-      setLoading(false);
-    }
     getStates();
   }, []);
 
+  async function getStates() {
+    const response = await axios.get("https://cdn-api.co-vin.in/api/v2/admin/location/states");
+    setStates(response.data.states.map(({ state_name, state_id }) => ({ label: state_name, value: state_id })));
+    setLoading(false);
+  }
+
+  React.useEffect(() => {
+    getDistricts(stateValue);
+  }, [stateValue]);
 
 
   const getDistricts = async (stateInput) => {
@@ -104,21 +111,22 @@ function App() {
           <FormControl variant="filled">
             <InputLabel htmlFor="component-filled">Pincode</InputLabel>
             <FilledInput id="component-filled" placeholder="Enter Pincode" value={pinCode} onChange={e => setPinCode(e.target.value)} />
-            <DatePicker
-              date={vaccineDates}
-              onDateChange={setVaccineDates}
-              locale={enGB}
-              format="dd-MM-yyyy"
-            >
-              {({ inputProps, focused }) => (
-                <input
-                  className={"input" + (focused ? " -focused" : "")}
-                  {...inputProps}
-                />
-              )}
-            </DatePicker>
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: "5%", marginTop: "5%" }}>
+              <DatePicker
+                date={vaccineDates}
+                onDateChange={setVaccineDates}
+                locale={enGB}
+                format="dd-MM-yyyy"
+              >
+                {({ inputProps, focused }) => (
+                  <input
+                    className={"input" + (focused ? " -focused" : "")}
+                    {...inputProps}
+                  />
+                )}
+              </DatePicker>
+            </div>
           </FormControl>
-          <p></p>
         </div>
       }
 
@@ -158,6 +166,8 @@ function App() {
                 </option>
               ))}
             </Select>
+          </FormControl>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: "1%" }}>
             <DatePicker
               date={vaccineDates}
               onDateChange={setVaccineDates}
@@ -171,8 +181,7 @@ function App() {
                 />
               )}
             </DatePicker>
-          </FormControl>
-
+          </div>
         </div>
       }
 
@@ -184,13 +193,18 @@ function App() {
         <br />
       </div>
 
+      {vaccineCenters.length === 0 &&
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: "1%" }}>
+            <Alert severity="error">There are no slots available. Please enter a pin and a date.</Alert>
+            </div>
+      }
       {/* Display data from API */}
       <div className="vaccines-detail">
         {vaccineCenters &&
           vaccineCenters.map((vaccineCenter, index) => {
             const cleanedDate = vaccineCenter.sessions[0].date;
             const mapLink = "https://www.google.com/maps/search/" + vaccineCenter.name + " " + vaccineCenter.pincode;
-
+            
             return (
               <div className="vaccine-detail" key={index}>
                 <h2>{vaccineCenter.name}</h2>
