@@ -108,3 +108,53 @@
 .input.-focused, .input:focus {
   border-color: #438cd2;
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .vaccine-detail {
+    width: 100%;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width:767px) {
+  .vaccine-detail {
+    width: 100%;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width:991px) {
+  .vaccine-detail {
+    width: 47%;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width:1023px){
+  .vaccine-detail {
+    width: 30%;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width:1199px){
+  .vaccine-detail {
+    width: 47%;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .vaccine-detail:only-child {
+    width: 47%;
+  }
+  .vaccine-detail:first-child:nth-last-child(2),
+  .vaccine-detail:first-child:nth-last-child(2) ~ .vaccine-detail {
+    width: 47%;
+  }
+
+  .vaccine-detail:first-child:nth-last-child(3),
+  .vaccine-detail:first-child:nth-last-child(3) ~ .vaccine-detail {
+    width: 31%;
+  }
+}
